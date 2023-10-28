@@ -175,11 +175,11 @@ p {
     background-image: url(/img/bg.png);
     background-size: cover;
     background-position: center;
+    height: 100vh;
 }
 
 .banner__section {
     padding-top: 200px;
-    height: 30rem;
     text-align: center;
     margin-bottom: 50px;
 }
