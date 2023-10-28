@@ -1,0 +1,406 @@
+html {
+    font-size: 100%;
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --gray: #f6f6f6;
+    --blue: #2e54ff;
+    --black: #272727;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--blue);
+}
+
+body {
+    background-image: url(/img/2.webp);
+    line-height: 1.3;
+    font-family: para;
+}
+
+@font-face {
+    font-family: heading;
+    src: url(../../font/ranade/Ranade-Bold.otf);
+}
+@font-face {
+    font-family: para;
+    src: url(../../font/excon/Excon-Light.otf);
+}
+@font-face {
+    font-family: mid;
+    src: url(../../font/ranade/Ranade-Medium.otf);
+}
+
+/* ALL SWITCH TEXT HERE */
+.switch {
+    background-color: var(--gray);
+    border-radius: 30px;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.4s all ease;
+    text-decoration: none;
+}
+
+.switch span {
+    position: relative;
+    top: 0px;
+    transition: 0.4s all ease;
+    color: var(--black);
+}
+
+.switch span:after {
+    content: "Schedule Meeting";
+    display: block;
+    opacity: 0;
+    transition: 0.4s all ease;
+    color: white;
+}
+
+.switch:hover {
+    background-color: var(--blue);
+}
+.switch:hover span {
+    top: -40px;
+}
+
+.switch:hover span:after {
+    opacity: 1;
+}
+
+.navbar .switch:hover {
+    background-color: transparent;
+}
+
+/* Navbar */
+.home .switch span:after {
+    content: "Home";
+    color: var(--blue);
+}
+
+/* branding */
+.branding .switch span:after {
+    content: "Branding";
+    color: var(--blue);
+}
+
+/* designing */
+.designing .switch span:after {
+    content: "Designing";
+    color: var(--blue);
+}
+
+/* development */
+.development .switch span:after {
+    content: "Development";
+    color: var(--blue);
+}
+
+/* contact */
+.contact .switch span:after {
+    content: "Contact";
+    color: var(--blue);
+}
+
+.branding__page .contact .switch span:after {
+    content: "Contact";
+    color: white;
+}
+
+/* ALL SWITCH ENDS HERE */
+
+span {
+    color: #2e54ff;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+a {
+    text-decoration: none;
+}
+li {
+    list-style: none;
+}
+
+button {
+    border-radius: 50px !important;
+    width: 180px;
+}
+
+h1 {
+    font-family: heading;
+    font-size: 2rem !important;
+    font-size: clamp(2rem, 1.1rem + 2.3vw, 6rem) !important;
+}
+
+h2 {
+    font-family: mid;
+    font-size: 1.2rem !important;
+    font-size: clamp(1.2rem, 0.94rem + 0.9vw, 2.5rem) !important;
+}
+
+p {
+    font-family: para;
+    font-size: 0.875rem !important;
+    font-size: clamp(0.875rem, 0.7rem + 0.5vw, 1.5625rem) !important;
+}
+
+.navbar .navbar-collapse {
+    flex-grow: 0;
+}
+
+.navbar-nav {
+    background-color: var(--gray);
+    border-radius: 30px;
+}
+
+.header {
+    background-image: url(/img/bg.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.banner__section {
+    padding-top: 200px;
+    height: 30rem;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.banner__section .switch {
+    padding: 1px 20px;
+}
+
+.nav-link {
+    padding: 1px 10px !important;
+}
+
+/* Section 2 start */
+.section__2 {
+    padding-top: 80px;
+}
+.section__2 .left {
+    width: 80%;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.section__2 .right {
+    position: relative;
+}
+.section__2 .right img {
+    position: absolute;
+    height: 20rem;
+    top: -100px;
+    z-index: -1;
+}
+
+/* Section 2 ends */
+
+.section__3 {
+    padding-top: 100px;
+    overflow-x: hidden;
+    overflow: hidden;
+}
+.section__3 .servicesLinkCon {
+    margin-top: 140px;
+    margin-bottom: 200px;
+    text-align: center;
+}
+.section__3 .servicesLinkCon a {
+    text-decoration: none;
+}
+.section__3 .servicesLinkCon h3 {
+    margin-bottom: 30px;
+    transition: opacity 0.5s ease-in-out 0s;
+}
+.section__3 .servicesLinkCon:hover .serviceRow,
+.section__3 .servicesLinkCon:hover h3 {
+    opacity: 0.2;
+}
+.section__3 .servicesLinkCon .serviceRow {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+    transition: all 0.5s ease-in-out 0s;
+}
+.section__3 .servicesLinkCon .serviceRow .serviceName {
+    font-size: 2em;
+    z-index: 10;
+    position: relative;
+    transition: color 0.5s ease-in-out 0s;
+}
+.section__3 .servicesLinkCon .serviceRow .serviceName.research {
+    color: var(--blue);
+}
+.section__3 .servicesLinkCon .serviceRow .serviceName.branding {
+    color: var(--blue);
+}
+.section__3 .servicesLinkCon .serviceRow .serviceName.creativeCampaigns {
+    color: var(--blue);
+}
+.section__3 .servicesLinkCon .serviceRow .servicePreview {
+    position: absolute;
+    width: 0%;
+    height: 10%;
+    top: 40%;
+    left: 50%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 10px;
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition-duration: 0.5s;
+    transition-property: width, left, height, top;
+    transition-delay: 0s, 0s, 0.5s, 0.5s;
+}
+.section__3 .servicesLinkCon .serviceRow .servicePreview.research {
+    background-image: url(../../img/branding.jpg);
+}
+.section__3 .servicesLinkCon .serviceRow .servicePreview.branding {
+    background-image: url(../../img/designing.jpg);
+}
+.section__3 .servicesLinkCon .serviceRow .servicePreview.campaigns {
+    background-image: url(../../img/development.jpg);
+}
+.section__3 .servicesLinkCon .serviceRow:hover {
+    opacity: 1;
+    z-index: 20;
+    padding: 110px 0;
+}
+.section__3 .servicesLinkCon .serviceRow:hover .serviceName {
+    color: white;
+}
+.section__3 .servicesLinkCon .serviceRow:hover .servicePreview {
+    width: 60%;
+    left: 20%;
+    height: 300px;
+    top: -30px;
+}
+
+/* Section 4 starts */
+.section__4 a {
+    text-decoration: none;
+    color: black;
+}
+.section__4 .work {
+    width: 60%;
+    margin-inline: auto;
+    border-radius: 30px;
+    background-color: #eceff1;
+}
+.section__4 .work2 {
+    width: 70%;
+}
+.section__4 .work3 {
+    width: 80%;
+}
+.section__4 .work:hover {
+    background-color: #f6f6f6;
+    transform: scale(1.02);
+    box-shadow:
+        0 0 #e6ebef,
+        0 4px 24px rgba(0, 0, 0, 0.08);
+    transition: 0.3s;
+}
+
+.section__4 .switch span:after {
+    content: "Read the Case Study";
+}
+.section__4 .switch {
+    background-color: white;
+    width: 180px;
+}
+.section__4 .switch:hover {
+    background-color: var(--blue);
+    color: white !important;
+}
+
+/* Section 4 Ends */
+
+.footer {
+    background-color: var(--gray);
+    margin-top: 100px;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+}
+.footer p {
+    margin-bottom: 0px !important;
+}
+
+/* BRANDING PAGE STARTS -------- */
+/* BRANDING PAGE STARTS -------- */
+/* BRANDING PAGE STARTS -------- */
+.clear__process {
+    position: relative;
+}
+.horizontal__scroll {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+}
+
+.clear__process section {
+    min-width: 100%;
+    height: 100vh;
+    background-image: url(../img/2.webp);
+}
+.clear__process section:nth-child(2) {
+    background-color: #addaff;
+}
+.clear__process section:nth-child(3) {
+    background-color: #b7ffd0;
+}
+.clear__process section:nth-child(4) {
+    background-color: #fff4b3;
+    position: relative;
+    z-index: 1;
+}
+.clear__process section:nth-child(5) {
+    background-color: #ffcca7;
+    width: auto !important;
+}
+.clear__process section:nth-child(6) {
+    background-color: #d2fdd4;
+    width: auto !important;
+}
+.clear__process section:nth-child(7) {
+    background-color: #fa6c6c;
+    width: auto !important;
+}
+
+
+
+.clear__process .section3 div{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+}
+ 
+.clear__process .section4 .card{
+    width: 80%;
+    margin-inline: auto;
+    padding: 20px;
+    background-color: var(--gray);
+} 
