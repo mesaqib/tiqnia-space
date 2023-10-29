@@ -35,6 +35,7 @@ body {
 @font-face {
     font-family: heading;
     src: url(../../font/ranade/Ranade-Bold.otf);
+     /* src: url(../font/IntegralCF-Bold.otf); */
 }
 @font-face {
     font-family: para;
@@ -364,6 +365,8 @@ p {
     min-width: 100%;
     height: 100vh;
     background-image: url(../img/2.webp);
+    background-position: center;
+    background-size: cover;
 }
 .clear__process section:nth-child(2) {
     background-color: #addaff;
@@ -389,18 +392,30 @@ p {
     width: auto !important;
 }
 
-
-
-.clear__process .section3 div{
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
+.clear__process .section3 div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
- 
-.clear__process .section4 .card{
+
+.clear__process .section4 .card {
     width: 80%;
     margin-inline: auto;
     padding: 20px;
     background-color: var(--gray);
-} 
+}
+.clear__process .section5{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.clear__process .section5 a{
+    text-decoration: none;
+     color: var(--black);
+}
+.clear__process .section5 a:hover{
+    color: var(--blue);
+    transition: 0.4s;
+}
