@@ -35,7 +35,7 @@ body {
 @font-face {
     font-family: heading;
     src: url(../../font/ranade/Ranade-Bold.otf);
-     /* src: url(../font/IntegralCF-Bold.otf); */
+    /* src: url(../font/IntegralCF-Bold.otf); */
 }
 @font-face {
     font-family: para;
@@ -405,17 +405,60 @@ p {
     padding: 20px;
     background-color: var(--gray);
 }
-.clear__process .section5{
+.clear__process .section5 {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.clear__process .section5 a{
+.clear__process .section5 a {
     text-decoration: none;
-     color: var(--black);
+    color: var(--black);
 }
-.clear__process .section5 a:hover{
+.clear__process .section5 a:hover {
     color: var(--blue);
     transition: 0.4s;
+}
+
+/* Desiging Page Start */
+/* Desiging Page Start */
+/* Desiging Page Start */
+/* Desiging Page Start */
+
+.project-show{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px;
+}
+.project-show a{
+    text-decoration: none;
+}
+.project-show .card {
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--black);
+    color: white;
+    border: 0px;
+    padding: 10px 15px;
+}
+.project-show .card .no{
+    font-size: 11rem;
+    color: rgba(255, 255, 255, 0.141);
+    position: absolute;
+    bottom: -70px;
+}
+
+.project-show .card .no::selection{
+    display: none;
+}
+.project-show .card  img{
+    position: absolute;
+     width: 100%;
+    border-radius: 5px;
+    transform: translateY(250px);
+}
+.project-show .card:hover img{
+    transform: translateY(0px);
+    transition: all 1s;
 }
