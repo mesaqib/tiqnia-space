@@ -37,8 +37,8 @@ body {
 
 @font-face {
   font-family: heading;
-  src: url(../../font/ranade/Ranade-Bold.otf);
-  /* src: url(../font/IntegralCF-Bold.otf); */
+  /* src: url(../../font/ranade/Ranade-Bold.otf); */
+  src: url(../font/IntegralCF-Heavy.ttf);
 }
 @font-face {
   font-family: para;
