@@ -108,35 +108,35 @@
         <h1>Let's get in touch!</h1>
         <p>For business enquires, <a href="mailto:hi@tiqniaspace.com?subject=Enquiry">email</a> or complete the form below.</p>
 
-        <form action="">
+        <form action="https://formspree.io/f/xzblneav" method="POST">
           <label for="">My name is </label>
-          <input type="text" placeholder="Your Name" class="form-control" />
+          <input type="text" placeholder="Your Name" value="name" name="name" class="form-control" />
           <br />
           <label for="">I am a </label>
-          <input type="text" placeholder="Your profession" class="form-control form-control-sm" />
+          <input type="text" placeholder="Your profession" name="profession" class="form-control form-control-sm" />
           <br />
           <label for="">My email is</label>
-          <input type="email" placeholder="Your email" class="form-control form-control-sm" />
+          <input type="email" placeholder="Your email" name="email" class="form-control form-control-sm" />
           <br />
           <label for="">My Contact is</label>
-          <input type="tel" placeholder="Your contact number" class="form-control form-control-sm" />
+          <input type="tel" placeholder="Your contact number" name="contact" class="form-control form-control-sm" />
           <br />
 
           <label for="">I am looking for a </label>
           <br />
           <div class="looking-for d-flex flex-wrap mt-3">
             <label>
-              <input type="checkbox" name="" id="" /> &nbsp;&nbsp;&nbsp;
+              <input type="checkbox" name="branding" id="" /> &nbsp;&nbsp;&nbsp;
               <span>Branding</span>
             </label>
 
             <label>
-              <input type="checkbox" name="" id="" />&nbsp;&nbsp;&nbsp;
+              <input type="checkbox" name="designign" id="" />&nbsp;&nbsp;&nbsp;
               <span>Designing</span>
             </label>
 
             <label>
-              <input type="checkbox" name="" id="" />&nbsp;&nbsp;&nbsp;
+              <input type="checkbox" name="development" id="" />&nbsp;&nbsp;&nbsp;
               <span>Web Development</span>
             </label>
           </div>
@@ -146,14 +146,14 @@
             <br />
             <select name="" id="" class="form-select form-select-sm">
               <option>Select</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
+              <option value="1" name="5000">5</option>
+              <option value="2" name="20000+">20</option>
+              <option value="3" name="60000" >60</option>
             </select>
           </div>
 
           <label for="" class="mt-4">More details about the project (brief summary, deadline etc)</label> <br />
-          <textarea name="" id="" class="form-control textarea" cols="30" rows="5" placeholder="Your message"> </textarea>
+          <textarea name="message" id="" class="form-control textarea" cols="30" rows="5" placeholder="Your message"> </textarea>
 
           <div class="mt-4">
             <button type="submit" class="submit-btn">Submit</button>
