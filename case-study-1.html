@@ -182,6 +182,24 @@
       </ul>
     </footer>
     <!-- Fooer Ends -->
+    
+     <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+
+    <script>
+      const lenis = new Lenis();
+
+      lenis.on("scroll", (e) => {
+        console.log(e);
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+    </script>
+
 
     <script
       src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"

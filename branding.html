@@ -253,6 +253,25 @@
     </div>
     <!-- A clear Process Ends -->
 
+      <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+
+    <script>
+      const lenis = new Lenis();
+
+      lenis.on("scroll", (e) => {
+        console.log(e);
+      });
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+    </script>
+
+    
+
     <script type="text/javascript" src="js/skrollr.js"></script>
     <script type="text/javascript">
       var s = skrollr.init();
