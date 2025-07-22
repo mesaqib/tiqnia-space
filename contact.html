@@ -110,16 +110,16 @@
 
         <form action="https://formspree.io/f/xblkglna" method="POST">
           <label for="">My name is </label>
-          <input type="text" placeholder="Your Name" value="name" name="name" class="form-control" />
+          <input type="text" placeholder="Your Name" required name="name" class="form-control" />
           <br />
           <label for="">I am a </label>
-          <input type="text" placeholder="Your profession" name="profession" class="form-control form-control-sm" />
+          <input type="text" placeholder="Your profession" required name="profession" class="form-control form-control-sm" />
           <br />
           <label for="">My email is</label>
-          <input type="email" placeholder="Your email" name="email" class="form-control form-control-sm" />
+          <input type="email" placeholder="Your email" required name="email" class="form-control form-control-sm" />
           <br />
           <label for="">My Contact is</label>
-          <input type="tel" placeholder="Your contact number" name="contact" class="form-control form-control-sm" />
+          <input type="tel" placeholder="Your contact number" required name="contact" class="form-control form-control-sm" />
           <br />
 
           <label for="">I am looking for a </label>
@@ -132,7 +132,12 @@
 
             <label>
               <input type="checkbox" name="designign" id="" />&nbsp;&nbsp;&nbsp;
-              <span>Designing</span>
+              <span>UI/UX Design</span>
+            </label>
+
+            <label>
+              <input type="checkbox" name="development" id="" />&nbsp;&nbsp;&nbsp;
+              <span>Mobile App</span>
             </label>
 
             <label>
@@ -146,9 +151,12 @@
             <br />
             <select name="" id="" class="form-select form-select-sm">
               <option>Select</option>
-              <option value="1" name="5000">5</option>
-              <option value="2" name="20000+">20</option>
-              <option value="3" name="60000" >60</option>
+              <option value="1" name="5000">$1000 - $3000 USD</option>
+              <option value="2" name="20000+">$3000 - $5000 USD</option>
+              <option value="3" name="60000" >$5000 - $10,000 USD</option>
+              <option value="3" name="60000" >$10,000 - $30,000 USD</option>
+              <option value="3" name="60000" >$30,000+ USD</option>
+
             </select>
           </div>
 
