@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Fintech Dashboard",
+    "url": "https://example1.com",
+    "images": ["/image/project-1-a.jpg", "/image/project-1-b.jpg"],
+    "summary": "Enterprise-grade analytics dashboard with real-time data.",
+    "details": "Designed and developed a scalable Next.js app with role-based access, data viz, and audit trails.",
+    "createdAt": "2024-10-01T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "name": "E-commerce Revamp",
+    "url": "https://example2.com",
+    "images": ["/image/project-2-a.jpg", "/image/project-2-b.jpg"],
+    "summary": "High-conversion storefront redesign.",
+    "details": "UX overhaul, performance optimizations, and a modular design system.",
+    "createdAt": "2024-09-15T00:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "name": "SaaS Marketing Site",
+    "url": "https://example3.com",
+    "images": ["/image/project-3-a.jpg"],
+    "summary": "Modern and fast marketing experience.",
+    "details": "Implemented CMS-driven content with A/B testing hooks.",
+    "createdAt": "2024-08-20T00:00:00.000Z"
+  },
+  {
+    "id": 4,
+    "name": "Healthcare Portal",
+    "url": "https://example4.com",
+    "images": ["/image/project-1-a.jpg"],
+    "summary": "Accessible patient portal UI.",
+    "details": "WCAG-compliant design with secure auth flows.",
+    "createdAt": "2024-07-05T00:00:00.000Z"
+  },
+  {
+    "id": 5,
+    "name": "EdTech Platform",
+    "url": "https://example5.com",
+    "images": ["/image/project-2-a.jpg"],
+    "summary": "Interactive learning modules.",
+    "details": "Gamified UX and real-time collaboration features.",
+    "createdAt": "2024-06-12T00:00:00.000Z"
+  },
+  {
+    "id": 6,
+    "name": "AI Tools Showcase",
+    "url": "https://example6.com",
+    "images": ["/image/project-3-a.jpg"],
+    "summary": "Landing and demos for AI utilities.",
+    "details": "Animations and performance-focused builds.",
+    "createdAt": "2024-05-20T00:00:00.000Z"
+  }
+]
+
+
