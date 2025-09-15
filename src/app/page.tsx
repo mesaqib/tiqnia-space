@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import projectsData from '@/data/projects.json';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,6 +17,25 @@ export default function Home() {
   const backgroundRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
   const modalRef = useRef<HTMLDivElement>(null);
+  const [projects, setProjects] = useState<any[]>([]);
+
+  useEffect(() => {
+    // Load projects from API
+    const loadProjects = async () => {
+      try {
+        const response = await fetch('/api/projects');
+        const data = await response.json();
+        // Show only the latest 4 projects
+        setProjects(data.slice(0, 4));
+      } catch (error) {
+        console.error('Failed to load projects:', error);
+        // Fallback to empty array if API fails
+        setProjects([]);
+      }
+    };
+
+    loadProjects();
+  }, []);
 
   useEffect(() => {
     // Hero animations
@@ -112,16 +130,21 @@ export default function Home() {
     };
   }, []);
 
-  type Project = typeof projectsData[number];
-
-  const projects: Project[] = [...projectsData]
-    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-    .slice(0, 5);
+  type Project = {
+    id: number;
+    name: string;
+    url: string;
+    summary?: string;
+    details?: string;
+    technologies?: string[];
+    images?: string[];
+    createdAt?: string;
+  };
 
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const stats = [
-    { number: '150+', label: 'Projects Delivered' },
+    { number: '25+', label: 'Projects Delivered' },
     { number: '98%', label: 'Client Satisfaction' },
     { number: '24/7', label: 'Support Available' },
     { number: '3+', label: 'Years Experience' }
@@ -130,7 +153,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-white">
+      <section ref={heroRef} className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
         {/* Animated Background */}
         <div ref={backgroundRef} className="absolute inset-0">
           <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-[#2831BC]/10 to-[#3d47e8]/10 rounded-full filter blur-3xl"></div>
@@ -173,41 +196,43 @@ export default function Home() {
       </section>
 
       {/* Projects Section - Professional Cards */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-2">Selected Projects</h2>
-              <p className="text-gray-600 max-w-2xl">A snapshot of our recent work across UI/UX and web development.</p>
-            </div>
-            <Link href="/projects" className="hidden md:inline-flex items-center gap-2 text-[#2831BC] font-semibold hover:underline">
-              View all
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 5L19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            </Link>
-          </div>
-          <div ref={projectsRef} className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            {projects.map((p) => (
-              <Link
-                key={p.id}
-                href={`/projects/${p.id}`}
-                className="group rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 text-left"
-              >
-                <div className="relative h-56 bg-gradient-to-br from-[#2831BC]/20 to-[#3d47e8]/20">
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/40 to-transparent" />
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-gray-900">Case Study</span>
-                    <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">View details →</span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="text-gray-900 text-xl font-display font-bold mb-1">{p.name}</div>
-                  <div className="text-gray-500 text-sm truncate">{p.url}</div>
-                </div>
+      {projects.length > 0 && (
+        <section className="py-24 bg-gray-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-end justify-between mb-12">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-2">Selected Projects</h2>
+                <p className="text-gray-600 max-w-2xl">A snapshot of our recent work across UI/UX and web development.</p>
+              </div>
+              <Link href="/projects" className="hidden md:inline-flex items-center gap-2 text-[#2831BC] font-semibold hover:underline">
+                View all
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 5L19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </Link>
-            ))}
+            </div>
+            <div ref={projectsRef} className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+              {projects.map((p) => (
+                <Link
+                  key={p.id}
+                  href={`/projects/${p.id}`}
+                  className="group rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 text-left"
+                >
+                  <div className="relative h-56 bg-gradient-to-br from-[#2831BC]/20 to-[#3d47e8]/20">
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/40 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-gray-900">Case Study</span>
+                      <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">View details →</span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <div className="text-gray-900 text-xl font-display font-bold mb-1">{p.name}</div>
+                    <div className="text-gray-500 text-sm truncate">{p.url}</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Project Modal */}
       {selectedProject && (
@@ -220,11 +245,13 @@ export default function Home() {
               </div>
               <button onClick={() => setSelectedProject(null)} className="text-gray-500 hover:text-gray-700">Close</button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-5">
-              {selectedProject.images.map((img, idx) => (
-                <div key={idx} className="h-40 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm">Image {idx + 1}</div>
-              ))}
-            </div>
+            {selectedProject.images && selectedProject.images.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-5">
+                {selectedProject.images.map((img: string, idx: number) => (
+                  <div key={idx} className="h-40 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm">Image {idx + 1}</div>
+                ))}
+              </div>
+            )}
             <div className="p-5 border-t border-gray-200">
               <div className="text-lg font-display font-semibold mb-2">Project Overview</div>
               <p className="text-gray-700 mb-2">{selectedProject.summary}</p>

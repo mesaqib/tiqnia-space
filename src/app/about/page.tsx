@@ -1,27 +1,95 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function About() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const storyRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
+  const valuesRef = useRef<HTMLDivElement>(null);
   const aboutRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate-fadeInUp');
-          }
-        });
-      },
-      { threshold: 0.1 }
+    // Hero animations
+    const tl = gsap.timeline();
+    
+    tl.fromTo(titleRef.current, 
+      { y: 100, opacity: 0, scale: 0.8 },
+      { y: 0, opacity: 1, scale: 1, duration: 1.2, ease: "power3.out" }
+    )
+    .fromTo(subtitleRef.current,
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: "power2.out" },
+      "-=0.6"
     );
 
-    aboutRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
+    // Story section animation
+    if (storyRef.current) {
+      gsap.fromTo(storyRef.current.children,
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: storyRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    }
 
-    return () => observer.disconnect();
+    // Stats animation
+    if (statsRef.current?.children) {
+      gsap.fromTo(statsRef.current.children,
+        { scale: 0, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: statsRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    }
+
+    // Values animation
+    if (valuesRef.current?.children) {
+      gsap.fromTo(valuesRef.current.children,
+        { y: 60, opacity: 0, scale: 0.9 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: valuesRef.current,
+            start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   const stats = [
@@ -84,12 +152,12 @@ export default function About() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 bg-white">
+      <section ref={heroRef} className="relative py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-5xl md:text-6xl font-display font-bold text-gray-900 mb-6">
+          <h1 ref={titleRef} className="text-5xl md:text-6xl font-display font-bold text-gray-900 mb-6">
             About <span className="text-gradient">TiqniaSpace</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p ref={subtitleRef} className="text-xl text-gray-600 max-w-3xl mx-auto">
             We are a passionate team of designers, developers, and digital strategists dedicated to helping businesses thrive in the digital world.
           </p>
         </div>
@@ -98,7 +166,7 @@ export default function About() {
       {/* Company Story */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div ref={storyRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
                 Our Story
@@ -139,7 +207,7 @@ export default function About() {
       {/* Stats Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
               <div
                 key={stat.label}
@@ -165,12 +233,23 @@ export default function About() {
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
               Our Values
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              The principles that guide everything we do and shape our company culture
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              The principles that guide everything we do and shape our company culture. These core values drive our commitment to excellence and innovation in every project we undertake.
             </p>
+            <div className="max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed">
+              <p className="mb-4">
+                At TiqniaSpace, we believe that great digital experiences are built on a foundation of strong values. 
+                These principles aren't just words on a page – they're the living, breathing essence of how we work, 
+                collaborate, and deliver exceptional results for our clients.
+              </p>
+              <p>
+                Whether we're crafting a sleek user interface, architecting a robust backend system, or strategizing 
+                a comprehensive digital transformation, these values guide every decision we make and every line of code we write.
+              </p>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div ref={valuesRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {values.map((value, index) => (
               <div
                 key={value.title}
