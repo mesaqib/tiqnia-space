@@ -41,7 +41,7 @@ export default function Contact() {
       if (!res.ok) throw new Error('Failed');
       setSubmitStatus('success');
       setFormData({ name: '', email: '', company: '', budget: '', service: '', message: '' });
-    } catch (err) {
+    } catch {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

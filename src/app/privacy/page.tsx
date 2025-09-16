@@ -1,3 +1,9 @@
+export const metadata = {
+  title: 'Privacy Policy — TiqniaSpace',
+  description: 'Learn how TiqniaSpace collects, uses, and protects your data. View our full privacy practices and contact details.',
+  alternates: { canonical: '/privacy' },
+  openGraph: { title: 'Privacy Policy — TiqniaSpace', description: 'Our privacy practices and data handling.' }
+};
 export default function Privacy() {
   return (
     <div className="min-h-screen py-20">

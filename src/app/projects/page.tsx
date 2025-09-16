@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
+import Image from 'next/image';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import projectsData from '@/data/projects.json';
 
@@ -87,10 +88,12 @@ export default function ProjectsPage() {
                 className="group rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300"
               >
                 <div className="relative h-80 bg-gradient-to-br from-[#2831BC]/20 to-[#3d47e8]/20">
-                  <img 
-                    src={p.image} 
+                  <Image
+                    src={p.image}
                     alt={p.name}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 50vw"
+                    className="object-cover"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';

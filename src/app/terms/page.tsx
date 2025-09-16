@@ -1,3 +1,9 @@
+export const metadata = {
+  title: 'Terms & Conditions — TiqniaSpace',
+  description: 'Read the terms and conditions for using TiqniaSpace services and website.',
+  alternates: { canonical: '/terms' },
+  openGraph: { title: 'Terms & Conditions — TiqniaSpace', description: 'Terms for using our services.' }
+};
 export default function Terms() {
   return (
     <div className="min-h-screen py-20">

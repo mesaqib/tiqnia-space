@@ -168,6 +168,40 @@ export default function Services() {
       bgColor: 'bg-orange-50',
       borderColor: 'border-orange-200',
       stats: { projects: '25+', satisfaction: '100%' }
+    },
+    {
+      title: 'Social Media Management',
+      description: 'Grow and engage your audience with consistent, on-brand content, community management, and data-driven optimization across platforms.',
+      features: [
+        'Content Calendar & Publishing',
+        'Community Management',
+        'Brand Voice & Visuals',
+        'Reels/Shorts Editing',
+        'Hashtag & Trend Research',
+        'Monthly Performance Reports'
+      ],
+      icon: Users,
+      color: 'from-indigo-500 to-violet-500',
+      bgColor: 'bg-indigo-50',
+      borderColor: 'border-indigo-200',
+      stats: { projects: '30+', satisfaction: '98%' }
+    },
+    {
+      title: 'Digital Marketing',
+      description: 'Full‑funnel campaigns combining SEO, paid ads, and conversion optimization to drive qualified traffic and measurable ROI.',
+      features: [
+        'SEO Audits & On‑Page SEO',
+        'Google & Meta Ads',
+        'Landing Pages & CRO',
+        'Email & Automation',
+        'Analytics & Attribution',
+        'A/B Testing'
+      ],
+      icon: TrendingUp,
+      color: 'from-teal-500 to-emerald-500',
+      bgColor: 'bg-teal-50',
+      borderColor: 'border-teal-200',
+      stats: { projects: '45+', satisfaction: '97%' }
     }
   ];
 

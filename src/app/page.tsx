@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import projectsData from '@/data/projects.json';
@@ -128,6 +129,31 @@ export default function Home() {
     { number: '3+', label: 'Years Experience' }
   ];
 
+  const testimonials = [
+    {
+      quote: 'TiqniaSpace delivered beyond expectations — fast, clean, and on brand. Our conversions improved within weeks.',
+      author: 'Ananya Gupta',
+      role: 'Founder, Prima Legal'
+    },
+    {
+      quote: 'Excellent UI/UX instincts and execution. The team is responsive and proactive throughout the project.',
+      author: 'Rohan Mehta',
+      role: 'Product Lead, Digital Castle'
+    },
+    {
+      quote: 'Super smooth collaboration and pixel‑perfect web build. Would recommend without hesitation.',
+      author: 'Sarah Khan',
+      role: 'CEO, Resumind'
+    }
+  ];
+
+  const faqs = [
+    { q: 'What services do you offer?', a: 'UI/UX design, custom websites, web apps, 3D web, social media management, and digital marketing.' },
+    { q: 'How quickly can you start?', a: 'Typically within 1–3 days after scope confirmation and kickoff.' },
+    { q: 'What is your pricing model?', a: 'Fixed scope projects or monthly product/design subscriptions depending on requirements.' },
+    { q: 'Do you provide post‑launch support?', a: 'Yes. We offer maintenance plans and on‑demand support.' }
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -197,10 +223,12 @@ export default function Home() {
                   className="group rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 text-left"
                 >
                   <div className="relative h-56 bg-gradient-to-br from-[#2831BC]/20 to-[#3d47e8]/20">
-                    <img 
-                      src={p.image} 
+                    <Image
+                      src={p.image}
                       alt={p.name}
-                      className="w-full h-full object-cover"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.style.display = 'none';
@@ -223,6 +251,49 @@ export default function Home() {
         </section>
       )}
 
+
+      {/* Testimonials Slider */}
+      <section className="py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900">What Clients Say</h2>
+          </div>
+          <div className="relative overflow-hidden">
+            <div className="flex gap-6 snap-x snap-mandatory overflow-x-auto pb-4 no-scrollbar" aria-label="Testimonials">
+              {testimonials.map((t, idx) => (
+                <figure key={idx} className="min-w-[calc(100%-2rem)] sm:min-w-[calc(50%-1.5rem)] lg:min-w-[calc(33.33%-1rem)] snap-center bg-gray-50 border border-gray-100 rounded-3xl p-8 shadow-sm">
+                  <blockquote className="text-gray-800 text-lg leading-relaxed mb-6">“{t.quote}”</blockquote>
+                  <figcaption className="text-sm text-gray-600">
+                    <span className="font-semibold text-gray-900">{t.author}</span>
+                    <span className="ml-2">— {t.role}</span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-gray-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900">FAQs</h2>
+            <p className="text-gray-600 mt-3">Short answers to common questions</p>
+          </div>
+          <div className="divide-y divide-gray-200 bg-white border border-gray-100 rounded-2xl">
+            {faqs.map((f, i) => (
+              <details key={i} className="group p-6">
+                <summary className="flex cursor-pointer list-none items-center justify-between">
+                  <span className="text-lg font-display font-semibold text-gray-900">{f.q}</span>
+                  <span className="ml-4 text-[#2831BC] transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-3 text-gray-700 leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Process Section */}
       <section className="py-24 bg-white">

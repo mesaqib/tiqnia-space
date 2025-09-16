@@ -1,6 +1,7 @@
 import projects from '@/data/projects.json';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import type { Metadata } from 'next';
 
 export default async function ProjectDetail({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -20,4 +21,27 @@ export default async function ProjectDetail({ params }: { params: Promise<{ id: 
 
   // Redirect to the actual project URL
   redirect(project.url);
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const idNum = Number(id);
+  const project = projects.find(p => p.id === idNum);
+  if (!project) {
+    return {
+      title: 'Project Not Found — TiqniaSpace',
+      description: 'Requested project could not be found.',
+      alternates: { canonical: `/projects/${id}` }
+    };
+  }
+  return {
+    title: `${project.name} — TiqniaSpace Project`,
+    description: `View details and live link for ${project.name}.`,
+    alternates: { canonical: `/projects/${project.id}` },
+    openGraph: {
+      title: `${project.name} — TiqniaSpace Project`,
+      description: `Explore ${project.name} by TiqniaSpace`,
+      url: `/projects/${project.id}`
+    }
+  };
 }
