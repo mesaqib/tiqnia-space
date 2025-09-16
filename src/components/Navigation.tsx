@@ -8,8 +8,11 @@ import { Menu, X, ArrowRight } from 'lucide-react';
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -19,6 +22,8 @@ export default function Navigation() {
   }, []);
 
   useEffect(() => {
+    if (!isMounted) return;
+    
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -27,7 +32,7 @@ export default function Navigation() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [isMobileMenuOpen]);
+  }, [isMobileMenuOpen, isMounted]);
 
   const navItems = [
     { name: 'Home', href: '/' },
@@ -40,7 +45,7 @@ export default function Navigation() {
   return (
     <nav 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white ${
-        isScrolled ? 'shadow-lg border-b border-gray-200' : 'shadow-sm border-b border-gray-100'
+        isMounted && isScrolled ? 'shadow-lg border-b border-gray-200' : 'shadow-sm border-b border-gray-100'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -100,7 +105,7 @@ export default function Navigation() {
         </div>
 
         {/* Mobile Navigation Overlay */}
-        <div className={`lg:hidden fixed inset-0 z-40 bg-white transition-opacity duration-300 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`lg:hidden fixed inset-0 z-40 bg-white transition-opacity duration-300 ${isMounted && isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
           <div className="pt-20 px-4 space-y-2">
             {navItems.map((item) => (
               <Link

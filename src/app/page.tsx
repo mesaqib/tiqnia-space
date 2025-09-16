@@ -1,9 +1,10 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import projectsData from '@/data/projects.json';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,26 +17,9 @@ export default function Home() {
   const statsRef = useRef<HTMLDivElement>(null);
   const backgroundRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
-  const modalRef = useRef<HTMLDivElement>(null);
-  const [projects, setProjects] = useState<any[]>([]);
-
-  useEffect(() => {
-    // Load projects from API
-    const loadProjects = async () => {
-      try {
-        const response = await fetch('/api/projects');
-        const data = await response.json();
-        // Show only the latest 4 projects
-        setProjects(data.slice(0, 4));
-      } catch (error) {
-        console.error('Failed to load projects:', error);
-        // Fallback to empty array if API fails
-        setProjects([]);
-      }
-    };
-
-    loadProjects();
-  }, []);
+  
+  // Get the first 4 projects from the JSON data
+  const projects: Project[] = projectsData.slice(0, 4);
 
   useEffect(() => {
     // Hero animations
@@ -134,14 +118,8 @@ export default function Home() {
     id: number;
     name: string;
     url: string;
-    summary?: string;
-    details?: string;
-    technologies?: string[];
-    images?: string[];
-    createdAt?: string;
+    image: string;
   };
-
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const stats = [
     { number: '25+', label: 'Projects Delivered' },
@@ -211,55 +189,40 @@ export default function Home() {
             </div>
             <div ref={projectsRef} className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {projects.map((p) => (
-                <Link
+                <a
                   key={p.id}
-                  href={`/projects/${p.id}`}
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 text-left"
                 >
                   <div className="relative h-56 bg-gradient-to-br from-[#2831BC]/20 to-[#3d47e8]/20">
+                    <img 
+                      src={p.image} 
+                      alt={p.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                      }}
+                    />
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-black/40 to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
-                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-gray-900">Case Study</span>
-                      <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">View details →</span>
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white/90 text-gray-900">Live Site</span>
+                      <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">Visit →</span>
                     </div>
                   </div>
                   <div className="p-6">
                     <div className="text-gray-900 text-xl font-display font-bold mb-1">{p.name}</div>
                     <div className="text-gray-500 text-sm truncate">{p.url}</div>
                   </div>
-                </Link>
+                </a>
               ))}
             </div>
           </div>
         </section>
       )}
 
-      {/* Project Modal */}
-      {selectedProject && (
-        <div ref={modalRef} className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" onClick={() => setSelectedProject(null)}>
-          <div className="bg-white rounded-2xl max-w-4xl w-full overflow-hidden" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between p-5 border-b border-gray-200">
-              <div>
-                <div className="text-2xl font-display font-bold text-gray-900">{selectedProject.name}</div>
-                <a href={selectedProject.url} target="_blank" rel="noopener noreferrer" className="text-[#2831BC] text-sm hover:underline">{selectedProject.url}</a>
-              </div>
-              <button onClick={() => setSelectedProject(null)} className="text-gray-500 hover:text-gray-700">Close</button>
-            </div>
-            {selectedProject.images && selectedProject.images.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-5">
-                {selectedProject.images.map((img: string, idx: number) => (
-                  <div key={idx} className="h-40 bg-gray-100 rounded-xl flex items-center justify-center text-gray-400 text-sm">Image {idx + 1}</div>
-                ))}
-              </div>
-            )}
-            <div className="p-5 border-t border-gray-200">
-              <div className="text-lg font-display font-semibold mb-2">Project Overview</div>
-              <p className="text-gray-700 mb-2">{selectedProject.summary}</p>
-              <p className="text-gray-600">{selectedProject.details}</p>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Process Section */}
       <section className="py-24 bg-white">

@@ -122,32 +122,6 @@ export default function About() {
     }
   ];
 
-  const team = [
-    {
-      name: 'Sarah Johnson',
-      role: 'Creative Director',
-      description: 'Passionate about creating beautiful, functional designs that tell your story.',
-      avatar: '👩‍🎨'
-    },
-    {
-      name: 'Michael Chen',
-      role: 'Lead Developer',
-      description: 'Full-stack developer with expertise in modern web technologies.',
-      avatar: '👨‍💻'
-    },
-    {
-      name: 'Emily Rodriguez',
-      role: 'UX Designer',
-      description: 'User experience specialist focused on creating intuitive digital experiences.',
-      avatar: '👩‍💼'
-    },
-    {
-      name: 'David Thompson',
-      role: 'Project Manager',
-      description: 'Ensures smooth project delivery and client satisfaction.',
-      avatar: '👨‍💼'
-    }
-  ];
 
   return (
     <div className="min-h-screen">
@@ -239,13 +213,13 @@ export default function About() {
             <div className="max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed">
               <p className="mb-4">
                 At TiqniaSpace, we believe that great digital experiences are built on a foundation of strong values. 
-                These principles aren't just words on a page – they're the living, breathing essence of how we work, 
+                These principles aren&apos;t just words on a page – they&apos;re the living, breathing essence of how we work, 
                 collaborate, and deliver exceptional results for our clients.
               </p>
-              <p>
-                Whether we're crafting a sleek user interface, architecting a robust backend system, or strategizing 
-                a comprehensive digital transformation, these values guide every decision we make and every line of code we write.
-              </p>
+                <p>
+                  Whether we&apos;re crafting a sleek user interface, architecting a robust backend system, or strategizing 
+                  a comprehensive digital transformation, these values guide every decision we make and every line of code we write.
+                </p>
             </div>
           </div>
 
