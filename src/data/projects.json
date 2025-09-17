@@ -1,36 +1,42 @@
 [
   {
     "id": 1,
+    "name": "Detntistry",
+    "url": "https://dentistic.vercel.app/",
+    "image": "/image/project/dental-1.png"
+  },
+  {
+    "id": 2,
     "name": "Caclfind - webapp for All Calculator",
     "url": "https://www.calcfind.com/",
     "image": "/image/project/project-1.png"
   },
   {
-    "id": 2,
+    "id": 3,
     "name": "Prima Legal", 
     "url": "https://www.primalegal.co.in/",
     "image": "/image/project/project-2.png"
   },
   {
-    "id": 3,
+    "id": 4,
     "name": "Ai Resume Analyzer",
     "url": "https://www.resumind.xyz", 
     "image": "/image/project/project-3.png"
   },
   {
-    "id": 4,
+    "id": 5,
     "name": "MathsPedia",
     "url": "https://mathspedia.vercel.app/",
     "image": "/image/project/project-4.png"
   },
   {
-    "id": 5,
+    "id": 6,
     "name": "Digital Castle",
     "url": "https://www.digitalcastle.co.in/",
     "image": "/image/project/project-5.png"
   },
   {
-    "id": 6,
+    "id": 7,
     "name": "Grid Skew",
     "url": "https://grid-skew.vercel.app/",
    "image": "/image/project/project-6.png"
