@@ -100,6 +100,11 @@ body {
   background-clip: text;
 }
 
+/* Small buttons, less rounded */
+.btn-sm {
+  @apply px-5 py-2 text-sm rounded-md;
+}
+
 .glow-effect {
   box-shadow: 0 0 20px rgba(40, 49, 188, 0.3);
 }

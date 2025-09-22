@@ -18,6 +18,7 @@ export default function Home() {
   const statsRef = useRef<HTMLDivElement>(null);
   const backgroundRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
+  const comparisonRef = useRef<HTMLDivElement>(null);
   
   // Get the first 4 projects from the JSON data
   const projects: Project[] = projectsData.slice(0, 4);
@@ -73,8 +74,6 @@ export default function Home() {
       );
     }
 
-    // Stats counter animation
-    if (statsRef.current?.children) {
     // Projects animation
     if (projectsRef.current?.children) {
       gsap.fromTo(projectsRef.current.children,
@@ -93,6 +92,9 @@ export default function Home() {
         }
       );
     }
+
+    // Stats counter animation
+    if (statsRef.current?.children) {
       gsap.fromTo(statsRef.current.children,
         { scale: 0, opacity: 0 },
         {
@@ -104,6 +106,27 @@ export default function Home() {
           scrollTrigger: {
             trigger: statsRef.current,
             start: "top 80%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    }
+
+    // Comparison cards animation
+    if (comparisonRef.current?.children) {
+      gsap.fromTo(comparisonRef.current.children,
+        { y: 40, opacity: 0, rotateX: -10 },
+        {
+          y: 0,
+          opacity: 1,
+          rotateX: 0,
+          duration: 0.7,
+          stagger: 0.15,
+          ease: "power3.out",
+          transformPerspective: 800,
+          scrollTrigger: {
+            trigger: comparisonRef.current,
+            start: "top 85%",
             toggleActions: "play none none reverse"
           }
         }
@@ -155,9 +178,9 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-950 text-gray-200">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+      <section ref={heroRef} className="relative min-h-screen flex items-start justify-center pt-20 md:pt-28 overflow-hidden bg-gradient-to-b from-[#0b1025] via-[#0e142e] to-[#111827]">
         {/* Animated Background */}
         <div ref={backgroundRef} className="absolute inset-0">
           <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-[#2831BC]/10 to-[#3d47e8]/10 rounded-full filter blur-3xl"></div>
@@ -166,31 +189,34 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 ref={titleRef} className="text-4xl md:text-6xl font-display font-bold mb-6 leading-snug text-gradient">
-            Global UI/UX & Web Design — fast, seamless, cost‑efficient.
+          <span className="inline-block mb-4 px-3 py-1.5 rounded-md text-sm text-gray-200 bg-white/5 ring-1 ring-white/10">TiqniaSpace — Your Website Partner</span>
+          <h1 ref={titleRef} className="text-6xl md:text-8xl font-display font-bold mb-6 leading-tight text-white">
+            Build. Launch. Win.
           </h1>
-          <p ref={subtitleRef} className="text-lg md:text-xl text-gray-700 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Turn your ideas into impactful solutions.
+          <p ref={subtitleRef} className="text-base md:text-lg text-gray-300 mb-6 max-w-3xl mx-auto leading-relaxed">
+            End‑to‑end web development: custom websites, landing pages, e‑commerce, performance optimization, and SEO.
           </p>
-          <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link href="https://cal.com/tiqniaspace/30min" target="_blank" rel="noopener noreferrer" className="text-white px-8 py-3 rounded-full text-base font-semibold transition-all duration-300 bg-gradient-to-r from-[#2831BC] to-[#3d47e8] hover:from-[#1f27a6] hover:to-[#313ce0]">Book a Call</Link>
-            <Link href="mailto:saqib@tiqniaspace.com" className="px-8 py-3 rounded-full text-base font-semibold transition-all duration-300 bg-gradient-to-r from-white to-white text-[#2831BC] border-2 border-transparent bg-clip-padding [background:linear-gradient(#fff,#fff)_padding-box,linear-gradient(135deg,#2831BC,#3d47e8)_border-box]">Get In Touch</Link>
+          <div ref={ctaRef} className="flex justify-center items-center">
+            <Link href="https://cal.com/tiqniaspace/15min" target="_blank" rel="noopener noreferrer" className="btn-sm text-white font-semibold transition-all duration-300 bg-[#6d5ef7] hover:bg-[#7a6bff] shadow-lg shadow-indigo-900/30">Book a 15 min call</Link>
           </div>
         </div>
 
         
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-white">
+      {/* Delivered Section */}
+      <section className="py-20 bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-white">What we’ve delivered so far</h2>
+          </div>
           <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8">
                     {stats.map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="text-4xl md:text-5xl font-display font-bold text-[#2831BC] mb-2">
                   {stat.number}
                 </div>
-                <div className="text-gray-600 font-medium">
+                <div className="text-gray-400 font-medium">
                   {stat.label}
                 </div>
               </div>
@@ -201,12 +227,12 @@ export default function Home() {
 
       {/* Projects Section - Professional Cards */}
       {projects.length > 0 && (
-        <section className="py-24 bg-gray-50">
+        <section id="works" className="py-24 bg-gray-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-end justify-between mb-12">
               <div>
-                <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-2">Selected Projects</h2>
-                <p className="text-gray-600 max-w-2xl">A snapshot of our recent work across UI/UX and web development.</p>
+                <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-2">Selected Projects</h2>
+                <p className="text-gray-300 max-w-2xl">A snapshot of our recent work across UI/UX and web development.</p>
               </div>
               <Link href="/projects" className="hidden md:inline-flex items-center gap-2 text-[#2831BC] font-semibold hover:underline">
                 View all
@@ -220,7 +246,7 @@ export default function Home() {
                   href={p.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group rounded-3xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 text-left"
+                  className="group rounded-3xl overflow-hidden bg-gray-800 border border-gray-700 shadow-sm hover:shadow-2xl transition-all duration-300 text-left"
                 >
                   <div className="relative h-56 bg-gradient-to-br from-[#2831BC]/20 to-[#3d47e8]/20">
                     <Image
@@ -241,8 +267,8 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="p-6">
-                    <div className="text-gray-900 text-xl font-display font-bold mb-1">{p.name}</div>
-                    <div className="text-gray-500 text-sm truncate">{p.url}</div>
+                    <div className="text-white text-xl font-display font-bold mb-1">{p.name}</div>
+                    <div className="text-gray-400 text-sm truncate">{p.url}</div>
                   </div>
                 </a>
               ))}
@@ -251,20 +277,68 @@ export default function Home() {
         </section>
       )}
 
+      {/* Small Two-Column Banner */}
+      <section className="py-16 bg-gray-950">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div>
+              <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">All Your Website Needs, Expertly Handled</h3>
+              <p className="text-gray-300 mb-6">End‑to‑end website solutions ❤️‍🔥 that ensure your website looks great, functions flawlessly, and drives results.🚀</p>
+              <Link href="https://cal.com/tiqniaspace/15min" target="_blank" rel="noopener noreferrer" className="inline-block text-white px-6 py-3 rounded-full text-base font-semibold transition-all duration-300 bg-gradient-to-r from-[#2831BC] to-[#3d47e8] hover:from-[#1f27a6] hover:to-[#313ce0]">Book a call</Link>
+            </div>
+            <div>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-200">
+                <li className="flex items-center gap-2"><span className="text-[#2831BC]">✓</span> End‑to‑End Web Development</li>
+                <li className="flex items-center gap-2"><span className="text-[#2831BC]">✓</span> Custom Website Design</li>
+                <li className="flex items-center gap-2"><span className="text-[#2831BC]">✓</span> Landing Page</li>
+                <li className="flex items-center gap-2"><span className="text-[#2831BC]">✓</span> E‑commerce Website</li>
+                <li className="flex items-center gap-2"><span className="text-[#2831BC]">✓</span> Website Optimization</li>
+                <li className="flex items-center gap-2"><span className="text-[#2831BC]">✓</span> SEO (Search Engine Optimization)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Benefits Section */}
+      <section id="benefits" className="py-24 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-white">Benefits</h2>
+            <p className="text-gray-300 mt-3">Clear outcomes that matter to your business</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: 'Faster time‑to‑launch', desc: 'From idea to live site in days, not months.' },
+              { title: 'Conversion‑focused design', desc: 'Layouts and copy that drive action.' },
+              { title: 'SEO‑ready foundation', desc: 'On‑page SEO best practices from day one.' },
+              { title: 'Performance optimized', desc: 'Fast loads, Core Web Vitals friendly.' },
+              { title: 'Scalable architecture', desc: 'Built to grow with your business.' },
+              { title: 'Ongoing support', desc: 'Post‑launch updates and maintenance.' },
+            ].map((b) => (
+              <div key={b.title} className="bg-gray-800 border border-gray-700 rounded-2xl p-6 shadow-sm">
+                <div className="text-xl font-display font-bold text-white mb-2">{b.title}</div>
+                <p className="text-gray-300">{b.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Testimonials Slider */}
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-gray-950">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900">What Clients Say</h2>
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-white">What Clients Say</h2>
           </div>
           <div className="relative overflow-hidden">
             <div className="flex gap-6 snap-x snap-mandatory overflow-x-auto pb-4 no-scrollbar" aria-label="Testimonials">
               {testimonials.map((t, idx) => (
-                <figure key={idx} className="min-w-[calc(100%-2rem)] sm:min-w-[calc(50%-1.5rem)] lg:min-w-[calc(33.33%-1rem)] snap-center bg-gray-50 border border-gray-100 rounded-3xl p-8 shadow-sm">
-                  <blockquote className="text-gray-800 text-lg leading-relaxed mb-6">“{t.quote}”</blockquote>
-                  <figcaption className="text-sm text-gray-600">
-                    <span className="font-semibold text-gray-900">{t.author}</span>
+                <figure key={idx} className="min-w-[calc(100%-2rem)] sm:min-w-[calc(50%-1.5rem)] lg:min-w-[calc(33.33%-1rem)] snap-center bg-gray-900 border border-gray-800 rounded-3xl p-8 shadow-sm">
+                  <blockquote className="text-gray-200 text-lg leading-relaxed mb-6">“{t.quote}”</blockquote>
+                  <figcaption className="text-sm text-gray-400">
+                    <span className="font-semibold text-white">{t.author}</span>
                     <span className="ml-2">— {t.role}</span>
                   </figcaption>
                 </figure>
@@ -274,82 +348,93 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-24 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900">FAQs</h2>
-            <p className="text-gray-600 mt-3">Short answers to common questions</p>
-          </div>
-          <div className="divide-y divide-gray-200 bg-white border border-gray-100 rounded-2xl">
-            {faqs.map((f, i) => (
-              <details key={i} className="group p-6">
-                <summary className="flex cursor-pointer list-none items-center justify-between">
-                  <span className="text-lg font-display font-semibold text-gray-900">{f.q}</span>
-                  <span className="ml-4 text-[#2831BC] transition-transform group-open:rotate-45">+</span>
-                </summary>
-                <p className="mt-3 text-gray-700 leading-relaxed">{f.a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="py-24 bg-white">
+      {/* How it starts? */}
+      <section className="py-24 bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-display font-bold text-gray-900 mb-6">
-              We deliver on time, in <span className="text-gradient">days and weeks</span>
-              <br />
-              <span className="text-2xl md:text-3xl text-gray-600 font-normal">—not months.</span>
-            </h2>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-white">How it starts?</h2>
+            <p className="text-gray-300 mt-3">Simple, clear steps to get moving</p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {[
-              { step: '01', title: 'Onboard in <1 day', description: 'Quick setup and project initiation' },
-              { step: '02', title: 'Understand Scope & Strategy', description: 'Deep dive into your requirements' },
-              { step: '03', title: 'First designs in 4-5 days', description: 'Initial concepts and wireframes' }
-                    ].map((process) => (
-              <div key={process.step} className="text-center group">
-                <div className="relative mb-8">
-                  <div className="w-24 h-24 bg-gradient-to-br from-[#2831BC] to-[#3d47e8] rounded-full flex items-center justify-center mx-auto text-white text-2xl font-display font-bold group-hover:scale-110 transition-transform duration-300">
-                    {process.step}
-                  </div>
-                </div>
-                <h3 className="text-xl font-display font-bold text-gray-900 mb-3">{process.title}</h3>
-                <p className="text-gray-600">{process.description}</p>
+              { step: '01', title: 'Book a 15 min call', description: 'Share goals and timelines.' },
+              { step: '02', title: 'Scope & Plan', description: 'We propose the best approach.' },
+              { step: '03', title: 'Design & Build', description: 'Iterate fast towards launch.' },
+              { step: '04', title: 'Launch & Optimize', description: 'Ship, measure, and improve.' },
+            ].map((s) => (
+              <div key={s.step} className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#2831BC] to-[#3d47e8] text-white flex items-center justify-center font-display font-bold text-xl">{s.step}</div>
+                <div className="text-lg font-display font-bold text-white mb-1">{s.title}</div>
+                <p className="text-gray-300">{s.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-[#2831BC] to-[#3d47e8]">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl md:text-6xl font-display font-bold text-white mb-8">
-            Ready to Transform Your Digital Presence?
-          </h2>
-          <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
-            Let&apos;s work together to create something amazing that drives your business forward and sets you apart from the competition.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Link
-              href="https://cal.com/tiqniaspace/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-              className="bg-white text-[#2831BC] px-10 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-xl inline-block magnetic-hover"
-            >
-              Start Your Project
-            </Link>
-            <Link
-              href="mailto:saqib@tiqniaspace.com"
-              className="border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-[#2831BC] transition-all duration-300 hover:scale-105 inline-block magnetic-hover"
-            >
-              Get In Touch
-            </Link>
+      {/* Comparison: What makes us unique? */}
+      <section id="comparison" className="py-24 bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-white">What makes us unique?</h2>
+          </div>
+          <div ref={comparisonRef} className="grid grid-cols-1 md:grid-cols-2 gap-6 perspective-1000">
+            <div className="bg-gray-800 border border-gray-700 rounded-2xl p-6 shadow-sm will-change-transform">
+              <div className="text-xl font-display font-bold text-white mb-2">TiqniaSpace</div>
+              <ul className="space-y-2 text-gray-300 list-disc pl-5">
+                <li>End‑to‑end delivery with one accountable team</li>
+                <li>Fast turnarounds with clear milestones</li>
+                <li>Conversion‑focused design and SEO baked‑in</li>
+                <li>Transparent pricing and communication</li>
+              </ul>
+            </div>
+            <div className="bg-gray-800 border border-gray-700 rounded-2xl p-6 shadow-sm will-change-transform">
+              <div className="text-xl font-display font-bold text-white mb-2">Typical Alternatives</div>
+              <ul className="space-y-2 text-gray-300 list-disc pl-5">
+                <li>Fragmented handoffs between teams</li>
+                <li>Unclear timelines and scope creep</li>
+                <li>Design not aligned to conversions/SEO</li>
+                <li>Hidden costs and slow responses</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-gray-900">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-display font-bold text-white">FAQs</h2>
+            <p className="text-gray-300 mt-3">Short answers to common questions</p>
+          </div>
+          <div className="divide-y divide-gray-800 bg-gray-800 border border-gray-700 rounded-2xl">
+            {faqs.map((f, i) => (
+              <details key={i} className="group p-6">
+                <summary className="flex cursor-pointer list-none items-center justify-between">
+                  <span className="text-lg font-display font-semibold text-white">{f.q}</span>
+                  <span className="ml-4 text-[#8ea0ff] transition-transform group-open:rotate-45">+</span>
+                </summary>
+                <p className="mt-3 text-gray-300 leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final Section with Cal.com embed */}
+      <section className="py-24 bg-gradient-to-r from-[#0f172a] to-[#111827]">
+        <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h2 className="text-5xl md:text-6xl font-display font-bold text-white mb-8">Let’s talk about your next big move</h2>
+          <p className="text-blue-100 mb-8 max-w-2xl mx-auto">Pick a time that works for you — no back‑and‑forth.</p>
+          <div className="relative w-full overflow-hidden rounded-2xl shadow-2xl border border-white/20 bg-white">
+            <iframe
+              title="Book a call"
+              src="https://cal.com/tiqniaspace/15min?layout=month&theme=light&embed=inline"
+              className="w-full"
+              style={{ height: '720px' }}
+              allowFullScreen
+            />
           </div>
         </div>
       </section>

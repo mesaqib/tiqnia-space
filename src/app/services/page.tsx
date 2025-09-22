@@ -280,82 +280,78 @@ export default function Services() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-950 text-gray-200">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50 overflow-hidden">
+      <section ref={heroRef} className="relative py-20 bg-gradient-to-b from-[#0b1025] via-[#0e142e] to-[#111827] overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-[#2831BC]/10 to-[#3d47e8]/10 rounded-full filter blur-3xl"></div>
           <div className="absolute top-40 right-20 w-80 h-80 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-full filter blur-3xl"></div>
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-6xl md:text-8xl font-display font-bold text-gray-900 mb-8 leading-tight">
+          <h1 className="text-3xl md:text-5xl font-display font-bold text-white mb-4 leading-tight">
             Our <span className="text-gradient">Services</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed mb-12">
+          <p className="text-base md:text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed mb-6">
             From startup to enterprise, grow your business with fast and creative designs! 
             We deliver comprehensive digital solutions that drive results.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="https://cal.com/tiqniaspace/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#2831BC] text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-[#1a1f8a] transition-all duration-300 hover:scale-105 hover:shadow-2xl glow-effect flex items-center justify-center space-x-3 magnetic-hover"
+              className="btn-sm bg-[#6d5ef7] text-white font-semibold hover:bg-[#7a6bff] transition-all duration-300 glow-effect flex items-center justify-center space-x-2 magnetic-hover"
             >
               <span>Book a Call</span>
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/contact"
-              className="border-2 border-[#2831BC] text-[#2831BC] px-10 py-4 rounded-full text-lg font-semibold hover:bg-[#2831BC] hover:text-white transition-all duration-300 hover:scale-105 flex items-center justify-center space-x-3 magnetic-hover"
+              className="btn-sm border border-[#8ea0ff] text-white hover:bg-[#2831BC] hover:border-[#2831BC] transition-all duration-300 flex items-center justify-center space-x-2 magnetic-hover"
             >
               <span>Get Quote</span>
-              <Zap className="w-5 h-5" />
+              <Zap className="w-4 h-4" />
             </Link>
           </div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-24 bg-white">
+      <section className="py-20 bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div ref={servicesRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div ref={servicesRef} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {services.map((service) => {
               const IconComponent = service.icon;
               return (
                 <div
                   key={service.title}
-                  className={`${service.bgColor} ${service.borderColor} border-2 rounded-3xl p-10 hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 group overflow-hidden relative`}
+                  className={`bg-gray-900 border border-gray-800 rounded-2xl p-6 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 group overflow-hidden relative`}
                 >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`}></div>
+                  <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
                   
                   <div className="relative z-10">
-                    <div className="flex items-center mb-8">
-                      <div className={`w-20 h-20 bg-gradient-to-r ${service.color} rounded-3xl flex items-center justify-center mr-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                        <IconComponent className="w-10 h-10 text-white" />
+                    <div className="flex items-center mb-6">
+                      <div className={`w-14 h-14 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                        <IconComponent className="w-7 h-7 text-white" />
                       </div>
                       <div>
-                        <h2 className="text-3xl font-display font-bold text-gray-900 mb-2">{service.title}</h2>
-                        <div className="flex space-x-4 text-sm text-gray-600">
-                          <span>{service.stats.projects} Projects</span>
-                          <span>•</span>
-                          <span>{service.stats.satisfaction} Satisfaction</span>
-                        </div>
+                        <h2 className="text-xl font-display font-bold text-white mb-1">{service.title}</h2>
+                        <div className="flex space-x-3 text-xs text-gray-400" />
                       </div>
                     </div>
                     
-                    <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+                    <p className="text-gray-300 text-sm mb-6 leading-relaxed">
                       {service.description}
                     </p>
 
-                    <div className="mb-8">
-                      <h3 className="text-xl font-display font-semibold text-gray-900 mb-6">What we offer:</h3>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="mb-6">
+                      <h3 className="text-base font-display font-semibold text-white mb-4">What we offer:</h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         {service.features.map((feature, featureIndex) => (
                           <div key={featureIndex} className="flex items-center space-x-3">
                             <CheckCircle className="w-5 h-5 text-[#2831BC] flex-shrink-0" />
-                            <span className="text-gray-700 font-medium">{feature}</span>
+                            <span className="text-gray-300 text-sm">{feature}</span>
                           </div>
                         ))}
                       </div>
@@ -363,7 +359,7 @@ export default function Services() {
 
                     <Link
                       href="/contact"
-                      className={`inline-flex items-center space-x-2 bg-gradient-to-r ${service.color} text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:scale-105 magnetic-hover`}
+                      className={`inline-flex items-center space-x-2 bg-gradient-to-r ${service.color} text-white btn-sm font-semibold hover:shadow-lg transition-all duration-300 magnetic-hover`}
                     >
                       <span>Get Started</span>
                       <ArrowRight className="w-4 h-4" />
@@ -377,67 +373,64 @@ export default function Services() {
       </section>
 
       {/* Process Section */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-display font-bold text-gray-900 mb-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
               Our <span className="text-gradient">Process</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We follow a proven methodology to ensure your project&apos;s success from start to finish
+            <p className="text-base text-gray-300 max-w-3xl mx-auto">
+              Clear, collaborative steps from kickoff to launch
             </p>
           </div>
 
-          <div ref={processRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <ol ref={processRef} className="relative border-l border-gray-700 max-w-4xl mx-auto pl-6 space-y-8">
             {process.map((step) => {
               const IconComponent = step.icon;
               return (
-                <div
-                  key={step.step}
-                  className="text-center group hover:scale-105 transition-all duration-300 perspective-1000"
-                >
-                  <div className="relative mb-8">
-                    <div className={`w-24 h-24 bg-gradient-to-br ${step.color} rounded-3xl flex items-center justify-center mx-auto text-white shadow-xl group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent className="w-10 h-10" />
+                <li key={step.step} className="group">
+                  <span className={`absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br ${step.color} text-white text-xs font-bold shadow-lg group-hover:scale-110 transition-transform`}>{step.step}</span>
+                  <div className="flex items-start gap-3">
+                    <div className={`mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br ${step.color} text-white shadow group-hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-shadow`}> 
+                      <IconComponent className="w-4 h-4" />
                     </div>
-                    <div className="absolute -top-3 -right-3 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center text-lg font-display font-bold text-gray-900 shadow-lg">
-                      {step.step}
+                    <div>
+                      <h3 className="text-white font-display font-semibold text-base mb-1">{step.title}</h3>
+                      <p className="text-gray-300 text-sm">{step.description}</p>
                     </div>
                   </div>
-                  <h3 className="text-xl font-display font-bold text-gray-900 mb-3">{step.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{step.description}</p>
-                </div>
+                </li>
               );
             })}
-          </div>
+          </ol>
         </div>
       </section>
 
       {/* Technology Stack */}
-      <section className="py-24 bg-white">
+      <section className="py-20 bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl md:text-6xl font-display font-bold text-gray-900 mb-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
               Technologies We Use
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-base text-gray-300 max-w-3xl mx-auto">
               We stay current with the latest technologies to deliver cutting-edge solutions
             </p>
           </div>
 
-          <div ref={techRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div ref={techRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {technologies.map((tech) => {
               const IconComponent = tech.icon;
               return (
                 <div
                   key={tech.name}
-                  className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 text-center group border border-gray-100"
+                  className="bg-gray-900 p-4 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 text-center group border border-gray-800"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-[#2831BC] to-[#3d47e8] rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent className="w-6 h-6 text-white" />
+                  <div className="w-10 h-10 bg-gradient-to-br from-[#2831BC] to-[#3d47e8] rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="w-5 h-5 text-white" />
                   </div>
-                  <div className="text-lg font-display font-bold text-gray-900 mb-1">{tech.name}</div>
-                  <div className="text-sm text-gray-500">{tech.category}</div>
+                  <div className="text-sm font-display font-bold text-white mb-0.5">{tech.name}</div>
+                  <div className="text-xs text-gray-400">{tech.category}</div>
                 </div>
               );
             })}
@@ -446,26 +439,26 @@ export default function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-[#2831BC] to-[#3d47e8]">
+      <section className="py-16 bg-gradient-to-r from-[#0f172a] to-[#111827]">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-5xl md:text-6xl font-display font-bold text-white mb-8">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
             Ready to Get Started?
           </h2>
-          <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
+          <p className="text-base text-blue-100 mb-6 max-w-2xl mx-auto">
             Let&apos;s discuss your project and see how we can help bring your vision to life with cutting-edge technology and innovative design.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="https://cal.com/tiqniaspace/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-[#2831BC] px-10 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-xl inline-block magnetic-hover"
+              className="btn-sm bg-white text-[#2831BC] font-semibold hover:bg-gray-100 transition-all duration-300 inline-block magnetic-hover"
             >
               Start Your Project
             </Link>
             <Link
               href="mailto:saqib@tiqniaspace.com"
-              className="border-2 border-white text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-[#2831BC] transition-all duration-300 hover:scale-105 inline-block magnetic-hover"
+              className="btn-sm border border-white text-white font-semibold hover:bg-white hover:text-[#2831BC] transition-all duration-300 inline-block magnetic-hover"
             >
               Get In Touch
             </Link>
@@ -475,3 +468,4 @@ export default function Services() {
     </div>
   );
 }
+

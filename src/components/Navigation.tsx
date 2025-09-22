@@ -44,8 +44,8 @@ export default function Navigation() {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white ${
-        isMounted && isScrolled ? 'shadow-lg border-b border-gray-200' : 'shadow-sm border-b border-gray-100'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isMounted && isScrolled ? 'backdrop-blur bg-gray-950/80 border-b border-gray-800' : 'bg-gray-950 border-b border-gray-900'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,7 +56,7 @@ export default function Navigation() {
             className="flex items-center space-x-3 group"
           >
             <Image
-              src="/image/color-logo.svg"
+              src="/image/white-logo.svg"
               alt="TiqniaSpace"
               width={36}
               height={36}
@@ -74,19 +74,19 @@ export default function Navigation() {
               <Link
                 key={item.name}
                 href={item.href}
-                className="relative text-gray-700 hover:text-[#2831BC] font-medium transition-all duration-300 group"
+                className="relative text-gray-300 hover:text-white font-medium transition-all duration-300 group"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#2831BC] transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
             <Link
               href="https://cal.com/tiqniaspace/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white px-6 py-2 rounded-full font-semibold transition-all duration-300 hover:scale-105 flex items-center space-x-2 bg-gradient-to-r from-[#2831BC] to-[#3d47e8] hover:from-[#1f27a6] hover:to-[#313ce0]"
+              className="text-white px-6 py-2 rounded-full font-semibold transition-all duration-300 hover:scale-105 flex items-center space-x-2 bg-gradient-to-r from-[#2831BC] to-[#3d47e8] hover:from-[#1f27a6] hover:to-[#313ce0] shadow-lg shadow-indigo-900/30"
             >
-              <span>Schedule Call</span>
+              <span>Chat Now</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -94,24 +94,24 @@ export default function Navigation() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-all duration-300"
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-900 transition-all duration-300"
           >
             {isMobileMenuOpen ? (
-              <X className="w-6 h-6 text-gray-700" />
+              <X className="w-6 h-6 text-gray-300" />
             ) : (
-              <Menu className="w-6 h-6 text-gray-700" />
+              <Menu className="w-6 h-6 text-gray-300" />
             )}
           </button>
         </div>
 
         {/* Mobile Navigation Overlay */}
-        <div className={`lg:hidden fixed inset-0 z-40 bg-white transition-opacity duration-300 ${isMounted && isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+        <div className={`lg:hidden fixed inset-0 z-50 bg-gray-950 transition-opacity duration-300 ${isMounted && isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
           <div className="pt-20 px-4 space-y-2">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="block px-4 py-4 text-2xl font-semibold text-gray-900 hover:text-[#2831BC] rounded-lg transition-all duration-300"
+                className="block px-4 py-4 text-2xl font-semibold text-white hover:text-[#8ea0ff] rounded-lg transition-all duration-300"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
@@ -121,7 +121,7 @@ export default function Navigation() {
               href="https://cal.com/tiqniaspace/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="block mx-4 mt-6 text-white px-6 py-4 rounded-full text-center transition-all duration-300 font-semibold text-lg bg-gradient-to-r from-[#2831BC] to-[#3d47e8]"
+              className="block mx-4 mt-6 text-white px-6 py-4 rounded-full text-center transition-all duration-300 font-semibold text-lg bg-gradient-to-r from-[#2831BC] to-[#3d47e8] shadow-lg shadow-indigo-900/30"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Schedule Call

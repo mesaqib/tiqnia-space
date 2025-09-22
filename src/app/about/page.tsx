@@ -124,28 +124,28 @@ export default function About() {
 
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gray-950 text-gray-200">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative py-20 bg-white">
+      <section ref={heroRef} className="relative py-20 bg-gradient-to-b from-[#0b1025] via-[#0e142e] to-[#111827]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 ref={titleRef} className="text-5xl md:text-6xl font-display font-bold text-gray-900 mb-6">
+          <h1 ref={titleRef} className="text-3xl md:text-5xl font-display font-bold text-white mb-4">
             About <span className="text-gradient">TiqniaSpace</span>
           </h1>
-          <p ref={subtitleRef} className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We are a passionate team of designers, developers, and digital strategists dedicated to helping businesses thrive in the digital world.
+          <p ref={subtitleRef} className="text-base md:text-lg text-gray-300 max-w-3xl mx-auto">
+            We are a team of designers, developers, and strategists helping businesses thrive online.
           </p>
         </div>
       </section>
 
       {/* Company Story */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div ref={storyRef} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl md:text-4xl font-display font-bold text-white mb-4">
                 Our Story
               </h2>
-              <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+              <div className="space-y-4 text-sm md:text-base text-gray-300 leading-relaxed">
                 <p>
                   Founded with a vision to bridge the gap between creativity and technology, 
                   TiqniaSpace has been at the forefront of digital innovation since our inception.
@@ -163,11 +163,11 @@ export default function About() {
               </div>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-[#2831BC] to-[#3d47e8] rounded-3xl p-8 text-white">
+              <div className="bg-gradient-to-br from-[#2831BC] to-[#3d47e8] rounded-2xl p-6 text-white">
                 <div className="text-center">
-                  <div className="text-6xl font-display font-bold mb-4">🚀</div>
-                  <h3 className="text-2xl font-display font-bold mb-4">Our Mission</h3>
-                  <p className="text-blue-100 leading-relaxed">
+                  <div className="text-4xl font-display font-bold mb-3">🚀</div>
+                  <h3 className="text-xl font-display font-bold mb-3">Our Mission</h3>
+                  <p className="text-blue-100 text-sm leading-relaxed">
                     To empower businesses through innovative digital solutions that drive growth, 
                     enhance user experiences, and create lasting value.
                   </p>
@@ -179,7 +179,7 @@ export default function About() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -188,10 +188,10 @@ export default function About() {
                 ref={(el) => { aboutRefs.current[index] = el; }}
                 className="text-center opacity-0"
               >
-                <div className="text-4xl md:text-5xl font-display font-bold text-[#2831BC] mb-2">
+                <div className="text-3xl md:text-4xl font-display font-bold text-[#8ea0ff] mb-1">
                   {stat.number}
                 </div>
-                <div className="text-gray-600 font-medium">
+                <div className="text-gray-400 font-medium text-sm">
                   {stat.label}
                 </div>
               </div>
@@ -201,16 +201,16 @@ export default function About() {
       </section>
 
       {/* Values Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+            <h2 className="text-2xl md:text-4xl font-display font-bold text-white mb-4">
               Our Values
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-base text-gray-300 max-w-3xl mx-auto mb-6">
               The principles that guide everything we do and shape our company culture. These core values drive our commitment to excellence and innovation in every project we undertake.
             </p>
-            <div className="max-w-4xl mx-auto text-lg text-gray-700 leading-relaxed">
+            <div className="max-w-4xl mx-auto text-sm md:text-base text-gray-300 leading-relaxed">
               <p className="mb-4">
                 At TiqniaSpace, we believe that great digital experiences are built on a foundation of strong values. 
                 These principles aren&apos;t just words on a page – they&apos;re the living, breathing essence of how we work, 
@@ -222,19 +222,18 @@ export default function About() {
                 </p>
             </div>
           </div>
-
-          <div ref={valuesRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div ref={valuesRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
               <div
                 key={value.title}
                 ref={(el) => { aboutRefs.current[index + 4] = el; }}
-                className="text-center opacity-0 group hover:scale-105 transition-transform duration-300 bg-white p-6 rounded-2xl shadow-lg"
+                className="text-center opacity-0 group hover:scale-105 transition-transform duration-300 bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-700"
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-[#2831BC] to-[#3d47e8] rounded-full flex items-center justify-center mx-auto mb-6 text-3xl group-hover:scale-110 transition-transform duration-300">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#2831BC] to-[#3d47e8] rounded-full flex items-center justify-center mx-auto mb-4 text-2xl group-hover:scale-110 transition-transform duration-300">
                   {value.icon}
                 </div>
-                <h3 className="text-2xl font-display font-bold text-gray-900 mb-4">{value.title}</h3>
-                <p className="text-gray-700 leading-relaxed">{value.description}</p>
+                <h3 className="text-lg font-display font-bold text-white mb-2">{value.title}</h3>
+                <p className="text-gray-300 leading-relaxed text-sm">{value.description}</p>
               </div>
             ))}
           </div>
@@ -244,15 +243,15 @@ export default function About() {
       {/* Team Section removed as requested */}
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gray-900">
+        <div className="max-w-7xl mx:auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative">
-              <div className="bg-gradient-to-br from-[#2831BC] to-[#3d47e8] rounded-3xl p-8 text-white">
+              <div className="bg-gradient-to-br from-[#2831BC] to-[#3d47e8] rounded-2xl p-6 text-white">
                 <div className="text-center">
-                  <div className="text-6xl font-display font-bold mb-4">🎯</div>
-                  <h3 className="text-2xl font-display font-bold mb-4">Why Choose TiqniaSpace?</h3>
-                  <ul className="text-left space-y-3 text-blue-100">
+                  <div className="text-4xl font-display font-bold mb-3">🎯</div>
+                  <h3 className="text-xl font-display font-bold mb-3">Why Choose TiqniaSpace?</h3>
+                  <ul className="text-left space-y-2 text-blue-100 text-sm">
                     <li>• Proven track record of successful projects</li>
                     <li>• Cutting-edge technology and methodologies</li>
                     <li>• Dedicated support and maintenance</li>
@@ -263,10 +262,10 @@ export default function About() {
               </div>
             </div>
             <div>
-              <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl md:text-4xl font-display font-bold text-white mb-4">
                 Partner with Us
               </h2>
-              <div className="space-y-6 text-lg text-gray-700 leading-relaxed">
+              <div className="space-y-4 text-sm md:text-base text-gray-300 leading-relaxed">
                 <p>
                   When you choose TiqniaSpace, you&apos;re not just hiring a service provider – 
                   you&apos;re gaining a strategic partner committed to your success.
@@ -287,17 +286,17 @@ export default function About() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#2831BC] to-[#3d47e8]">
+      <section className="py-16 bg-gradient-to-r from-[#0f172a] to-[#111827]">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-4">
             Ready to Work Together?
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p className="text-base text-blue-100 mb-6">
             Let&apos;s discuss how we can help transform your digital presence and drive your business forward.
           </p>
           <a
             href="/contact"
-            className="bg-white text-[#2831BC] px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-all duration-300 hover:scale-105 hover:shadow-xl inline-block"
+            className="btn-sm bg-white text-[#2831BC] font-semibold hover:bg-gray-100 transition-all duration-300 inline-block"
           >
             Get In Touch
           </a>
