@@ -55,7 +55,7 @@ export default function Navigation() {
           }`}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-3 items-center h-12">
+            <div className="relative flex items-center h-12">
               {/* Logo (left) */}
               <div className="flex items-center">
                 <Link href="/" className="flex items-center space-x-3 group">
@@ -71,7 +71,7 @@ export default function Navigation() {
               </div>
 
               {/* Desktop Navigation (center) */}
-              <div className="hidden lg:flex items-center justify-center space-x-6">
+              <div className="hidden lg:flex items-center justify-center space-x-6 absolute left-1/2 -translate-x-1/2">
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
@@ -85,7 +85,7 @@ export default function Navigation() {
               </div>
 
               {/* Right CTA + Mobile toggle */}
-              <div className="flex items-center justify-end">
+              <div className="flex items-center justify-end ml-auto">
                 <div className="hidden lg:block">
                   <Link
                     href="https://cal.com/tiqniaspace/30min"
@@ -98,7 +98,10 @@ export default function Navigation() {
                 </div>
                 <button
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="lg:hidden p-2 rounded-lg hover:bg-gray-900 transition-all duration-300"
+                  className="lg:hidden p-2 rounded-md hover:bg-gray-900 transition-colors"
+                  aria-label="Toggle menu"
+                  aria-expanded={isMobileMenuOpen}
+                  aria-controls="mobile-nav"
                 >
                   {isMobileMenuOpen ? (
                     <X className="w-6 h-6 text-gray-300" />
@@ -113,7 +116,7 @@ export default function Navigation() {
       </div>
 
       {/* Mobile Navigation Overlay */}
-      <div className={`lg:hidden fixed inset-0 z-50 bg-gray-950 transition-opacity duration-300 ${isMounted && isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
+      <div id="mobile-nav" className={`lg:hidden fixed inset-0 z-50 bg-gray-950 transition-opacity duration-300 ${isMounted && isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
         <div className="pt-3 px-3">
           <div className="flex items-center justify-between h-10">
             <span className="text-sm text-gray-300">Menu</span>
