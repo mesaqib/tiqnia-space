@@ -1,11 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "Detntistry",
-    "url": "https://dentistic.vercel.app/",
-    "image": "/image/project/dental.png"
-  },
-  {
     "id": 2,
     "name": "Caclfind - webapp for All Calculator",
     "url": "https://www.calcfind.com/",
@@ -36,9 +30,12 @@
     "image": "/image/project/project-5.png"
   },
   {
-    "id": 7,
+    "id": 1,
     "name": "Grid Skew",
     "url": "https://grid-skew.vercel.app/",
    "image": "/image/project/project-6.png"
   }
 ]
+
+
+
