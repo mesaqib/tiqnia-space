@@ -30,7 +30,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Services() {
   const heroRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
-  const processRef = useRef<HTMLDivElement>(null);
+  const processRef = useRef<HTMLOListElement>(null);
   const techRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -316,7 +316,7 @@ export default function Services() {
           </div>
         </div>
       </section>
-
+ 
       {/* Services Grid */}
       <section className="py-20 bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -371,7 +371,7 @@ export default function Services() {
           </div>
         </div>
       </section>
-
+ 
       {/* Process Section */}
       <section className="py-20 bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -405,7 +405,7 @@ export default function Services() {
           </ol>
         </div>
       </section>
-
+ 
       {/* Technology Stack */}
       <section className="py-20 bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -437,7 +437,7 @@ export default function Services() {
           </div>
         </div>
       </section>
-
+ 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-[#0f172a] to-[#111827]">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
@@ -468,4 +468,6 @@ export default function Services() {
     </div>
   );
 }
+
+
 

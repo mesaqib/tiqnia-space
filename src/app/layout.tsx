@@ -52,10 +52,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-gray-950">
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-950 text-gray-200`}
       >
         <Navigation />
-        <main className="pt-16">
+        <main className="">
           {children}
         </main>
         <Footer />

@@ -180,7 +180,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-950 text-gray-200">
       {/* Hero Section */}
-      <section ref={heroRef} className="relative min-h-screen flex items-start justify-center pt-20 md:pt-28 overflow-hidden bg-gradient-to-b from-[#0b1025] via-[#0e142e] to-[#111827]">
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#0b1025] via-[#0e142e] to-[#111827]">
         {/* Animated Background */}
         <div ref={backgroundRef} className="absolute inset-0">
           <div className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-[#2831BC]/10 to-[#3d47e8]/10 rounded-full filter blur-3xl"></div>
@@ -197,7 +197,7 @@ export default function Home() {
             End‑to‑end web development: custom websites, landing pages, e‑commerce, performance optimization, and SEO.
           </p>
           <div ref={ctaRef} className="flex justify-center items-center">
-            <Link href="https://cal.com/tiqniaspace/15min" target="_blank" rel="noopener noreferrer" className="btn-sm text-white font-semibold transition-all duration-300 bg-[#6d5ef7] hover:bg-[#7a6bff] shadow-lg shadow-indigo-900/30">Book a 15 min call</Link>
+            <Link href="https://cal.com/tiqniaspace/15min" target="_blank" rel="noopener noreferrer" className="btn-sm text-white font-semibold transition-all duration-300 bg-gradient-to-r from-[#2831BC] to-[#3d47e8] hover:from-[#1f27a6] hover:to-[#313ce0] shadow-lg shadow-indigo-900/30">Book a 15 min call</Link>
           </div>
         </div>
 
@@ -366,7 +366,7 @@ export default function Home() {
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-[#2831BC] to-[#3d47e8] text-white flex items-center justify-center font-display font-bold text-xl">{s.step}</div>
                 <div className="text-lg font-display font-bold text-white mb-1">{s.title}</div>
                 <p className="text-gray-300">{s.description}</p>
-              </div>
+          </div>
             ))}
           </div>
         </div>
@@ -396,9 +396,9 @@ export default function Home() {
                 <li>Design not aligned to conversions/SEO</li>
                 <li>Hidden costs and slow responses</li>
               </ul>
-            </div>
           </div>
-        </div>
+                  </div>
+                </div>
       </section>
 
       {/* FAQ Section */}
@@ -407,7 +407,7 @@ export default function Home() {
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-display font-bold text-white">FAQs</h2>
             <p className="text-gray-300 mt-3">Short answers to common questions</p>
-          </div>
+              </div>
           <div className="divide-y divide-gray-800 bg-gray-800 border border-gray-700 rounded-2xl">
             {faqs.map((f, i) => (
               <details key={i} className="group p-6">
@@ -441,3 +441,5 @@ export default function Home() {
     </div>
   );
 }
+
+
